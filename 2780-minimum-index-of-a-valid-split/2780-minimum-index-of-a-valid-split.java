@@ -3,31 +3,32 @@ class Solution {
         int n = nums.size();
         int candidate = 0;
         int count = 0;
-        for(int num: nums){
-            if(count == 0){
+        for (int num : nums) {
+            if (count == 0) {
                 candidate = num;
             }
-            if(num == candidate){
+            if (num == candidate) {
                 count++;
-            } else{
+            } else {
                 count--;
             }
         }
         int totalCount = 0;
-        for(int num: nums){
-            if(num == candidate){
+        for (int num : nums) {
+            if (num == candidate) {
                 totalCount++;
             }
         }
         int leftCount = 0;
-        for(int i=0; i<n-1; i++){
-            if(nums.get(i)==candidate){
+        for (int i = 0; i < n - 1; i++) {
+            if (nums.get(i) == candidate) {
                 leftCount++;
             }
-            int leftSize = i+1;
+            int leftSize = i + 1;
             int rightSize = n - leftSize;
             int rightCount = totalCount - leftCount;
-            if(leftCount > leftSize / 2 && rightCount > rightSize / 2) return i;
+            if (leftCount > leftSize / 2 && rightCount > rightSize / 2)
+                return i;
         }
         return -1;
     }
